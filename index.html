@@ -229,9 +229,14 @@ var myElement = document.getElementById('container');
 var mc = new Hammer(myElement);
 
 // listen to events...
+mc.on("swipedown", function(ev) {
+    //myElement.textContent = ev.type +" gesture detected.";
+     alert('swipped down');
+});
+
 mc.on("tap", function(ev) {
     //myElement.textContent = ev.type +" gesture detected.";
-     console.log(ev);
+     alert('tapped');
 });
 
 
