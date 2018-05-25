@@ -221,22 +221,18 @@ img.hover-shadow {
 
 <script>
 
-var containerElement = document.getElementById('container');
-var activeRegion = ZingTouch.Region(containerElement);
 
-var childElement = document.getElementById('test');
+var myElement = document.getElementById('container');
 
+// create a simple instance
+// by default, it only adds horizontal recognizers
+var mc = new Hammer(myElement);
 
-
-activeRegion.bind(childElement, 'tap', function(event){
-  //Perform Operations
-  console.log('Image tapped');
+// listen to events...
+mc.on("tap", function(ev) {
+    //myElement.textContent = ev.type +" gesture detected.";
+     alert('tap detected');
 });
-/*activeRegion.bind(childElement, 'swipe', function(event){
-  //Perform Operations
-  console.log('Image swiped');
-});*/
-
 
 
 // Open the Modal
