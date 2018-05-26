@@ -417,7 +417,7 @@ showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
-  tmp += n;
+  tmp = tmp + n;
   alert('plusSlide '+tmp);
   showSlides(slideIndex += n);
 }
