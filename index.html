@@ -36,9 +36,9 @@
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
+  /*padding-top: 100px;*/
+  left: 0%;
+  top: 0%;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -51,6 +51,7 @@
   background-color: #fefefe;
   margin: auto;
   padding: 0;
+  top: 25%;
   width: 90%;
   max-width: 1200px;
 }
@@ -207,10 +208,9 @@ img.hover-shadow {
 </div>
 
 <script>
-var myElement = document.getElementById('container');
-
 // create a simple instance
 // by default, it only adds horizontal recognizers
+var myElement = document.getElementById('container');
 var mc = new Hammer(myElement);
 mc.on("tap", function(ev) {
      if(ev.target.dataset.index){
@@ -218,7 +218,6 @@ mc.on("tap", function(ev) {
        currentSlide(ev.target.dataset.index);
      }
 });
-
 
 var myModal = document.getElementById('myModal');
 var mm = new Hammer(myModal);
