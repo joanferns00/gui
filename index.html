@@ -194,28 +194,6 @@ img.hover-shadow {
     <!-- Next/previous controls -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-    <!-- Caption text -->
-<!--     <div class="caption-container">
-      <p id="caption"></p>
-    </div> -->
-
-    <!-- Thumbnail image controls -->
-<!--     <div class="column">
-      <img class="demo" src="image/img1.jpg" onclick="currentSlide(1)" alt="Nature">
-    </div>
-
-    <div class="column">
-      <img class="demo" src="image/img2.jpg" onclick="currentSlide(2)" alt="Trolltunga">
-    </div>
-
-    <div class="column">
-      <img class="demo" src="image/img3.jpg" onclick="currentSlide(3)" alt="Mountains">
-    </div>
-
-    <div class="column">
-      <img class="demo" src="image/img4.jpg" onclick="currentSlide(4)" alt="Lights">
-    </div> -->
   </div>
 </div>
 
@@ -244,9 +222,15 @@ var myModal = document.getElementById('myModal');
 var mm = new Hammer(myModal);
 mm.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 mm.on("swipedown", function(ev) {
-    //myElement.textContent = ev.type +" gesture detected.";
-    //alert('swipped down');
      closeModal();
+});
+
+mm.on("swipeleft", function(ev) {
+    plusSlides(-1)
+});
+
+mm.on("swiperight", function(ev) {
+    plusSlides(1)
 });
 
 // Open the Modal
