@@ -361,10 +361,12 @@ mm.on("swipedown", function(ev) {
 });
 
 mm.on("swipeleft", function(ev) {
+  alert("swipeleft")
     plusSlides(-1)
 });
 
 mm.on("swiperight", function(ev) {
+  alert("swiperight")
     plusSlides(1)
 });
 
@@ -422,7 +424,7 @@ function plusSlides(n) {
 
 // Thumbnail image controls
 function currentSlide(n) {
-  alert('currentSlide'+n);
+  tmp = n;
   showSlides(slideIndex = n);
 }
 
