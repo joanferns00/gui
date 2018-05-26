@@ -92,6 +92,7 @@ body{
 }
 
 .modal-heading{
+   font-family: Arial, Helvetica, sans-serif;  
   color: white;
   text-align: center;
   font-size: 55px;
@@ -287,42 +288,42 @@ img.hover-shadow {
 
     <div class="mySlides">
       <div class="numbertext">1 / 8</div>
-      <img src="image/img1.png" style="width:100%">
+      <img src="image/img1.png" style="width:100%" alt="Mountain View">
     </div>
 
     <div class="mySlides">
       <div class="numbertext">2 / 8</div>
-      <img src="image/img2.png" style="width:100%">
+      <img src="image/img2.png" style="width:100%" alt="Lounge">
     </div>
 
     <div class="mySlides">
       <div class="numbertext">3 / 8</div>
-      <img src="image/img3.png" style="width:100%">
+      <img src="image/img3.png" style="width:100%" alt="Air">
     </div>
 
     <div class="mySlides">
       <div class="numbertext">4 / 8</div>
-      <img src="image/img4.png" style="width:100%">
+      <img src="image/img4.png" style="width:100%" alt="Race Car">
     </div>
 
     <div class="mySlides">
       <div class="numbertext">5 / 8</div>
-      <img src="image/img5.png" style="width:100%">
+      <img src="image/img5.png" style="width:100%" alt="Lounge">
     </div>    
 
     <div class="mySlides">
       <div class="numbertext">6 / 8</div>
-      <img src="image/img6.png" style="width:100%">
+      <img src="image/img6.png" style="width:100%" alt="Desks">
     </div>   
 
     <div class="mySlides">
       <div class="numbertext">7 / 8</div>
-      <img src="image/img7.png" style="width:100%">
+      <img src="image/img7.png" style="width:100%" alt="Hive">
     </div>  
 
     <div class="mySlides">
       <div class="numbertext">8 / 8</div>
-      <img src="image/img8.png" style="width:100%">
+      <img src="image/img8.png" style="width:100%" alt="Logo">
     </div>        
 
     <!-- Next/previous controls -->
@@ -341,8 +342,6 @@ img.hover-shadow {
 </div>
 
 <script>
-// create a simple instance
-// by default, it only adds horizontal recognizers
 var myElement = document.getElementById('container');
 var mc = new Hammer(myElement);
 mc.on("tap", function(ev) {
@@ -372,8 +371,6 @@ var modalContent = document.getElementById('modalC');
 var modalCon = new Hammer(modalContent);
 var open = true;
 modalCon.on("tap", function(ev) {
-    // closeModal();
-    //hide the top and bottom modal
     if(open){
           document.getElementById('mh').style.visibility = "hidden";
           document.getElementById('mf').style.visibility = "hidden";
@@ -383,15 +380,8 @@ modalCon.on("tap", function(ev) {
           document.getElementById('mh').style.visibility = "visible";
           document.getElementById('mf').style.visibility = "visible";
     }
-          open = !open;
+    open = !open;
 });
-
-
-// var testImage = document.getElementById('testImage');
-// var ti = new Hammer(testImage);
-// ti.on("doubletap", function(ev) {
-//      alert('double tap');
-// });
 
 // Open the Modal
 function openModal() {
@@ -400,7 +390,6 @@ function openModal() {
 
 // Close the Modal
 function closeModal() {
-  //document.getElementById('myModal').style.display = "none";
   var modalImg = document.getElementById("modalC");
       modalImg.className += " out";
     setTimeout(function() {
@@ -425,13 +414,19 @@ function currentSlide(n) {
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
-  //var captionText = document.getElementById("caption");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
   slides[slideIndex-1].style.display = "block";
+  var childNodes = slides[slideIndex-1].childNodes;
+  for(var i = 0; i < childNodes.length ; i++){
+    if(childNodes[i].alt){
+      document.getElementById('mh').innerHTML = childNodes[i].alt;
+    }
+      
+  }
 }
 </script>
 
