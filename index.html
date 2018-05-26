@@ -203,18 +203,9 @@ var myElement = document.getElementById('container');
 // create a simple instance
 // by default, it only adds horizontal recognizers
 var mc = new Hammer(myElement);
-mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-
-
-// listen to events...
-mc.on("swipedown", function(ev) {
-    //myElement.textContent = ev.type +" gesture detected.";
-     alert('swipped down');
-});
-
 mc.on("tap", function(ev) {
-    //myElement.textContent = ev.type +" gesture detected.";
-     alert('tapped');
+     openModal();
+     currentSlide(1);
 });
 
 
