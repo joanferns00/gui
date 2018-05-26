@@ -6,24 +6,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 <style>
 
-
-/*
-.row > .column {
-  padding: 0 8px;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Create four equal columns that floats next to eachother */
-/*.column {
-  float: left;
-  width: 25%;
-}*/
-
 body{
   margin: 0px;
 }
@@ -51,7 +33,6 @@ body{
   display: none;
   position: fixed;
   z-index: 1;
-  /*padding-top: 100px;*/
   left: 0%;
   top: 0%;
   width: 100%;
@@ -233,21 +214,7 @@ img.hover-shadow {
 </head>
 
 <body>
-<!--   <div class="row">
-  <div class="column">
-    <img src="image/img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
-  </div>
-  <div class="column">
-    <img src="image/img2.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
-  </div>
-  <div class="column">
-    <img src="image/img3.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
-  </div>
-  <div class="column">
-    <img src="image/img4.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
-  </div>
-</div> -->
-  <h1 class="heading">Image gallery</h1>
+<h1 class="heading">Image gallery</h1>
 <div class="row" id="container">
 
   <div class="column">
@@ -288,7 +255,7 @@ img.hover-shadow {
 
     <div class="mySlides">
       <div class="numbertext">1 / 8</div>
-      <img src="image/img1.png" alt="Mountain View">
+      <img src="image/img1.png" style="width:100%" alt="Mountain View">
     </div>
 
     <div class="mySlides">
@@ -344,7 +311,7 @@ img.hover-shadow {
 <script>
 var myElement = document.getElementById('container');
 var mc = new Hammer(myElement);
-mc.on("tap", function(ev) {
+mc.on("doubletap", function(ev) {
      if(ev.target.dataset.index){
        openModal();
        currentSlide(Number(ev.target.dataset.index));
