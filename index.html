@@ -278,7 +278,7 @@ img.hover-shadow {
 <!-- The Modal/Lightbox -->
 <div id="myModal" class="modal">
 
-  <div class="modal-heading">
+  <div class="modal-heading" id="mh">
     <span class="modal-caption">Lounge</span>
     <span class="close cursor" onclick="closeModal()">&times;</span>
   </div>
@@ -329,7 +329,7 @@ img.hover-shadow {
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer" id="mf">
     <div class="modal-footer-content">
         <img class="modal-footer-image" src="image/icon1.png"/>
         <img class="modal-footer-image" src="image/share.png"/>
@@ -355,6 +355,15 @@ mc.on("tap", function(ev) {
 var myModal = document.getElementById('myModal');
 var mm = new Hammer(myModal);
 mm.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+mm.on("tap", function(ev) {
+    // closeModal();
+    //hide the top and bottom modal
+    document.getElementById('mh').style.display = "none";
+    document.getElementById('mf').style.display = "none";
+});
+
+
 mm.on("swipedown", function(ev) {
      closeModal();
 });
