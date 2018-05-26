@@ -356,11 +356,20 @@ var myModal = document.getElementById('myModal');
 var mm = new Hammer(myModal);
 mm.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
+var open = true;
 mm.on("tap", function(ev) {
     // closeModal();
     //hide the top and bottom modal
-    document.getElementById('mh').style.display = "none";
-    document.getElementById('mf').style.display = "none";
+    if(open){
+          document.getElementById('mh').style.visibility = "hidden";
+          document.getElementById('mf').style.visibility = "hidden";
+
+    }
+    else{
+          document.getElementById('mh').style.visibility = "visible";
+          document.getElementById('mf').style.visibility = "visible";
+    }
+          open = !open;
 });
 
 
