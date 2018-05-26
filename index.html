@@ -213,11 +213,8 @@ var myElement = document.getElementById('container');
 // by default, it only adds horizontal recognizers
 var mc = new Hammer(myElement);
 mc.on("tap", function(ev) {
-  console.log(ev);
-  debugger;
-   //  openModal();
-   //  currentSlide(1);
-
+     openModal();
+     currentSlide(ev.target.dataset.index);
 });
 
 
