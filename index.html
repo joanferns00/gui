@@ -145,13 +145,22 @@ img.hover-shadow {
 </head>
 
 <body>
-
-  <div id="container">
-
-<img src="image/img1.jpg" id="test"/>
+<!--   <div class="row">
+  <div class="column">
+    <img src="image/img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
   </div>
+  <div class="column">
+    <img src="image/img2.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="image/img3.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="image/img4.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
+  </div>
+</div> -->
 
-<div class="row">
+<div class="row" id="container">
   <div class="column">
     <img src="image/img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
   </div>
@@ -173,7 +182,7 @@ img.hover-shadow {
 
     <div class="mySlides">
       <div class="numbertext">1 / 4</div>
-      <img src="image/img1_wide.jpg" style="width:100%">
+      <img id="testImage" src="image/img1_wide.jpg" style="width:100%">
     </div>
 
     <div class="mySlides">
@@ -224,6 +233,12 @@ mm.on("swiperight", function(ev) {
     plusSlides(1)
 });
 
+var testImage = document.getElementById('testImage');
+var ti = new Hammer(testImage);
+mm.on("doubletap", function(ev) {
+     alert('double tap');
+});
+
 // Open the Modal
 function openModal() {
   document.getElementById('myModal').style.display = "block";
@@ -250,7 +265,6 @@ function currentSlide(n) {
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
-  //var dots = document.getElementsByClassName("demo");
   var captionText = document.getElementById("caption");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
@@ -258,11 +272,6 @@ function showSlides(n) {
     slides[i].style.display = "none";
   }
   slides[slideIndex-1].style.display = "block";
- /* for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;*/
 }
 </script>
 
