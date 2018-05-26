@@ -356,8 +356,22 @@ var myModal = document.getElementById('myModal');
 var mm = new Hammer(myModal);
 mm.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
+mm.on("swipedown", function(ev) {
+     closeModal();
+});
+
+mm.on("swipeleft", function(ev) {
+    plusSlides(-1)
+});
+
+mm.on("swiperight", function(ev) {
+    plusSlides(1)
+});
+
+var modalContent = document.getElementById('modalC');
+var modalCon = new Hammer(modalContent);
 var open = true;
-mm.on("tap", function(ev) {
+modalCon.on("tap", function(ev) {
     // closeModal();
     //hide the top and bottom modal
     if(open){
@@ -372,18 +386,6 @@ mm.on("tap", function(ev) {
           open = !open;
 });
 
-
-mm.on("swipedown", function(ev) {
-     closeModal();
-});
-
-mm.on("swipeleft", function(ev) {
-    plusSlides(-1)
-});
-
-mm.on("swiperight", function(ev) {
-    plusSlides(1)
-});
 
 // var testImage = document.getElementById('testImage');
 // var ti = new Hammer(testImage);
