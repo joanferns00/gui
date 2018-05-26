@@ -242,7 +242,8 @@ mc.on("tap", function(ev) {
 
 var myModal = document.getElementById('myModal');
 var mm = new Hammer(myModal);
-mc.on("swipedown", function(ev) {
+mm.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+mm.on("swipedown", function(ev) {
     //myElement.textContent = ev.type +" gesture detected.";
      alert('swipped down');
 });
