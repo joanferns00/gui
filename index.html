@@ -142,6 +142,35 @@ img.hover-shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
+/* Add Animation */
+.modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+.out {
+  animation-name: zoom-out;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(1)}
+    to {-webkit-transform:scale(2)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0.4)}
+    to {transform:scale(1)}
+}
+
+@keyframes zoom-out {
+    from {transform:scale(1)}
+    to {transform:scale(0)}
+}
+
+
 </style>
 </head>
 
@@ -179,7 +208,7 @@ img.hover-shadow {
 <!-- The Modal/Lightbox -->
 <div id="myModal" class="modal">
   <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
+  <div class="modal-content" id="modalC">
 
     <div class="mySlides">
       <div class="numbertext">1 / 4</div>
@@ -247,7 +276,13 @@ function openModal() {
 
 // Close the Modal
 function closeModal() {
-  document.getElementById('myModal').style.display = "none";
+  //document.getElementById('myModal').style.display = "none";
+  var modalImg = document.getElementById("modalC");
+      modalImg.className += " out";
+    setTimeout(function() {
+       document.getElementById('myModal').style.display = "none";
+       modalImg.className = "modal-content";
+     }, 400);
 }
 
 var slideIndex = 1;
