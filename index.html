@@ -240,6 +240,13 @@ mc.on("tap", function(ev) {
 });
 
 
+var myModal = document.getElementById('myModal');
+var mm = new Hammer(myModal);
+mc.on("swipedown", function(ev) {
+    //myElement.textContent = ev.type +" gesture detected.";
+     alert('swipped down');
+});
+
 // Open the Modal
 function openModal() {
   document.getElementById('myModal').style.display = "block";
