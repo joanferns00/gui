@@ -33,7 +33,7 @@
 
 /* The Modal (background) */
 .modal {
-  display: block;
+  display: none;
   position: fixed;
   z-index: 1;
   padding-top: 100px;
@@ -182,7 +182,7 @@ img.hover-shadow {
 
     <div class="mySlides">
       <div class="numbertext">1 / 4</div>
-      <img id="testImage" src="image/img1_wide.jpg" style="width:100%">
+      <img src="image/img1_wide.jpg" style="width:100%">
     </div>
 
     <div class="mySlides">
@@ -233,11 +233,11 @@ mm.on("swiperight", function(ev) {
     plusSlides(1)
 });
 
-var testImage = document.getElementById('testImage');
-var ti = new Hammer(testImage);
-ti.on("doubletap", function(ev) {
-     alert('double tap');
-});
+// var testImage = document.getElementById('testImage');
+// var ti = new Hammer(testImage);
+// ti.on("doubletap", function(ev) {
+//      alert('double tap');
+// });
 
 // Open the Modal
 function openModal() {
@@ -265,7 +265,7 @@ function currentSlide(n) {
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
-  var captionText = document.getElementById("caption");
+  //var captionText = document.getElementById("caption");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
