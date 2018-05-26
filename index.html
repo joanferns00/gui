@@ -66,7 +66,7 @@ body{
   background-color: #fefefe;
   margin: auto;
   padding: 0;
-  top: 25%;
+  top: 18%;
   width: 90%;
   max-width: 1200px;
 }
@@ -83,12 +83,6 @@ body{
 
 /* The Close Button */
 .close {
-  /*color: white;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 35px;
-  font-weight: bold;*/
     color: white;
     position: absolute;
     font-size: 55px;
@@ -102,7 +96,7 @@ body{
   text-align: center;
   font-size: 55px;
     padding: 40px 0px;
-    background-color: red;
+    background-color: #333333;
 }
 
 .modal-caption{
@@ -114,10 +108,11 @@ body{
     color: white;
     position: absolute;
     bottom: 0px;
-    background-color: red;
+    background-color: #333;
     width: 100%;
     text-align: center;
     font-size: 55px;
+    padding: 20px 0px;
 }
 
 .close:hover,
@@ -177,6 +172,14 @@ body{
   background-color: black;
   padding: 2px 16px;
   color: white;
+}
+
+.modal-footer-image{
+  margin: 15px;
+}
+.modal-footer-content{
+  display: flex;
+  justify-content: space-between;
 }
 
 img.demo {
@@ -326,8 +329,13 @@ img.hover-shadow {
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
-      <div class="modal-footer">
-    <p>My footer</p>
+  <div class="modal-footer">
+    <div class="modal-footer-content">
+        <img class="modal-footer-image" src="image/icon1.png"/>
+        <img class="modal-footer-image" src="image/share.png"/>
+        <img class="modal-footer-image" src="image/comment.png"/>
+        <img class="modal-footer-image" src="image/add.png"/>
+    </div>
   </div>  
 
 </div>
