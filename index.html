@@ -216,7 +216,6 @@ img.hover-shadow {
 <body>
 <h1 class="heading">Image gallery</h1>
 <div class="row" id="container">
-
   <div class="column">
     <img src="image/img1.png" onclick="openModal();currentSlide(1)" class="hover-shadow" data-index="1">
   </div>
@@ -230,21 +229,21 @@ img.hover-shadow {
     <img src="image/img4.png" onclick="openModal();currentSlide(4)" class="hover-shadow" data-index="4">
   </div>
   <div class="column">
-    <img src="image/img5.png" onclick="openModal();currentSlide(1)" class="hover-shadow" data-index="5">
+    <img src="image/img5.png" onclick="openModal();currentSlide(5)" class="hover-shadow" data-index="5">
   </div>
   <div class="column">
-    <img src="image/img6.png" onclick="openModal();currentSlide(2)" class="hover-shadow" data-index="6">
+    <img src="image/img6.png" onclick="openModal();currentSlide(6)" class="hover-shadow" data-index="6">
   </div>
   <div class="column">
-    <img src="image/img7.png" onclick="openModal();currentSlide(3)" class="hover-shadow" data-index="7">
+    <img src="image/img7.png" onclick="openModal();currentSlide(7)" class="hover-shadow" data-index="7">
   </div>
   <div class="column">
-    <img src="image/img8.png" onclick="openModal();currentSlide(4)" class="hover-shadow" data-index="8">
+    <img src="image/img8.png" onclick="openModal();currentSlide(8)" class="hover-shadow" data-index="8">
   </div>  
 </div>
 
 <!-- The Modal/Lightbox -->
-<div id="myModal" class="modal">
+<!-- <div id="myModal" class="modal">
 
   <div class="modal-heading" id="mh">
     <span class="modal-caption">Lounge</span>
@@ -294,7 +293,7 @@ img.hover-shadow {
     </div>        
 
     <!-- Next/previous controls -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <!--<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
   <div class="modal-footer" id="mf">
@@ -304,14 +303,18 @@ img.hover-shadow {
         <img class="modal-footer-image" src="image/comment.png"/>
         <img class="modal-footer-image" src="image/add.png"/>
     </div>
-  </div>  
+  </div>   -->
+
+  <div id="myModal" class="modal">
+        <img src="image/img8.png" alt="Logo">
+  </div>
 
 </div>
 
 <script>
 var myElement = document.getElementById('container');
 var mc = new Hammer(myElement);
-mc.on("doubletap", function(ev) {
+mc.on("tap", function(ev) {
      if(ev.target.dataset.index){
        openModal();
        currentSlide(Number(ev.target.dataset.index));
@@ -359,7 +362,7 @@ function openModal() {
 function closeModal() {
   var modalImg = document.getElementById("modalC");
       modalImg.className += " out";
-    setTimeout(function() {
+    setTimeout(function(){
        document.getElementById('myModal').style.display = "none";
        modalImg.className = "modal-content";
      }, 400);
@@ -375,7 +378,7 @@ function plusSlides(n) {
 
 // Thumbnail image controls
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  ///showSlides(slideIndex = n);
 }
 
 function showSlides(n) {
