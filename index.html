@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Photo Gallery</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 <style>
 
 body{
@@ -307,13 +306,8 @@ img.hover-shadow {
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 <script>
-var data = {
-  images: [
-{}
-
-  ]
-}
 var myElement = document.getElementById('container');
 var mc = new Hammer(myElement);
 mc.on("tap", function(ev) {
@@ -401,7 +395,5 @@ function showSlides(n) {
   }
 }
 </script>
-
 </body>
-
 </html> 

@@ -1,0 +1,163 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Photo Gallery</title>
+<style>
+* {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+body {
+  background-color: #fff;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.slider {
+  display: flex;
+  width: 300%;  
+}
+
+.slider-panel {
+  padding-top: 10%;
+  width: 100%;
+  height: 40px;
+}
+
+.has-slider {
+  overflow: hidden;
+  width: 100%;
+}
+
+.colophon {
+  color: #808080;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  text-align: center;
+}
+
+a {
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.125em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+</style>
+</head>
+<body>
+<div class='has-slider'>
+  <div class='slider' id='slider'>
+    <div class='slider-panel' style='background-color: #faaf34; background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/40288/65d721_4dfa47a05152487fb3bc45ca2ec8fd1e.png)'></div>
+    <div class='slider-panel' style='background-color: #aca680; background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/40288/65d721_761db9a0c113407f924a824ed173ed26.png)'></div>
+    <div class='slider-panel' style='background-color: #d8daa6; background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/40288/tumblr_njkn6kp0kE1qgsw73o1_500.png)'></div>
+  </div>
+  <div class='slider-pagination'></div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<script>
+// 1. Basic object for our stuff
+window.slider = {};
+
+// 2. Settings
+slider.sliderPanelSelector = '.slider-panel';
+slider.sliderPaginationSelector = '.slider-pagination';
+slider.sensitivity = 25 // horizontal % needed to trigger swipe
+
+// 2. Placeholder to remember which slide we’re on
+slider.activeSlide = 0;
+
+// 3. Slide counter
+slider.slideCount = 0;
+
+// 4. Initialization + event listener
+slider.init = function( selector ) {
+  
+  // 4a. Find the container
+  slider.sliderEl = document.querySelector( selector );
+  
+  // 4b. Count stuff
+  slider.slideCount = slider.sliderEl.querySelectorAll( slider.sliderPanelSelector ).length;
+  
+  // 4c. Populate pagination
+  var n = 0;
+  for( n; n < slider.slideCount; n++ ) {
+    var activeStatus = n == slider.activeSlide ? ' class="is-active"' : '';
+    slider.sliderEl.parentElement.querySelector( slider.sliderPaginationSelector ).innerHTML += '<div ' + activeStatus + '></div>';
+  }
+  
+  // 4d. Set up HammerJS
+  var sliderManager = new Hammer.Manager( slider.sliderEl );
+  sliderManager.add( new Hammer.Pan({ threshold: 0, pointers: 0 }) );
+  sliderManager.on( 'pan', function( e ) {
+    
+    // 4e. Calculate pixel movements into 1:1 screen percents so gestures track with motion
+    var percentage = 100 / slider.slideCount * e.deltaX / window.innerWidth;
+    
+    // 4f. Multiply percent by # of slide we’re on
+    var percentageCalculated = percentage - 100 / slider.slideCount * slider.activeSlide;
+    
+    // 4g. Apply transformation
+    slider.sliderEl.style.transform = 'translateX( ' + percentageCalculated + '% )';
+    
+    // 4h. Snap to slide when done
+    if( e.isFinal ) {
+      if( e.velocityX > 1 ) {
+        slider.goTo( slider.activeSlide - 1 );
+      } else if( e.velocityX < -1 ) {
+        slider.goTo( slider.activeSlide + 1 )
+      } else {
+        if( percentage <= -( slider.sensitivity / slider.slideCount ) )
+          slider.goTo( slider.activeSlide + 1 );
+        else if( percentage >= ( slider.sensitivity / slider.slideCount ) )
+          slider.goTo( slider.activeSlide - 1 );
+        else
+          slider.goTo( slider.activeSlide );
+      }
+    }
+  });
+};
+
+// 5. Update current slide
+slider.goTo = function( number ) {
+  
+  // 5a. Stop it from doing weird things like moving to slides that don’t exist
+  if( number < 0 )
+    slider.activeSlide = 0;
+  else if( number > slider.slideCount - 1 )
+    slider.activeSlide = slider.slideCount - 1
+  else
+    slider.activeSlide = number;
+    
+ // 5b. Apply transformation & smoothly animate via .is-animating CSS
+ slider.sliderEl.classList.add( 'is-animating' );
+ var percentage = -( 100 / slider.slideCount ) * slider.activeSlide;
+ slider.sliderEl.style.transform = 'translateX( ' + percentage + '% )';
+ clearTimeout( slider.timer );
+ slider.timer = setTimeout( function() {
+   slider.sliderEl.classList.remove( 'is-animating' );
+ }, 400 );
+  
+ // 5c. Update the counters
+ var pagination = slider.sliderEl.parentElement.querySelectorAll( slider.sliderPaginationSelector + ' > *' );
+ var n = 0;
+ for( n; n < pagination.length; n++ ) {
+   var className = n == slider.activeSlide ? 'is-active' : '';
+   pagination[n].className = className;
+ }
+};
+
+// Initialize
+slider.init( '#slider' );
+
+</script>
+  </body>
+  </html>
