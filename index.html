@@ -268,7 +268,7 @@ img.hover-shadow {
 <!-- The Modal/Lightbox -->
 <div id="myModal" class="modal">
 
-  <div class="modal-heading" >
+  <div class="modal-heading" id="modal-header">
     <span class="modal-caption" id="mh">Lounge</span>
     <span class="close cursor" onclick="closeModal()">&times;</span>
   </div>
@@ -422,12 +422,12 @@ var modalCon = new Hammer(modalContent);
 var open = true;
 modalCon.on("tap", function(ev) {
     if(open){
-          document.getElementById('mh').style.visibility = "hidden";
+          document.getElementById('modal-header').style.visibility = "hidden";
           document.getElementById('mf').style.visibility = "hidden";
 
     }
     else{
-          document.getElementById('mh').style.visibility = "visible";
+          document.getElementById('modal-header').style.visibility = "visible";
           document.getElementById('mf').style.visibility = "visible";
     }
     open = !open;
