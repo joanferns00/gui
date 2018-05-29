@@ -107,6 +107,7 @@ body{
 .mySlides {
   display: none;
 }
+
 .mySlides img{
   width: 100%;
 }
@@ -160,8 +161,8 @@ body{
 
 .modal-footer-image{
   margin: 15px;
-  width: 8%;
-  height: 8%;
+  width: 6%;
+  height: 6%;
 }
 .modal-footer-content{
   display: flex;
@@ -213,15 +214,12 @@ img.hover-shadow {
     to {transform:scale(0)}
 }
 
-
-
 .slider {
   display: flex;
   width: 800%;
 }
 
 .slider-panel {
-  /*padding-top: 10%;*/
   width: 100%;
 }
 
@@ -303,20 +301,20 @@ img.hover-shadow {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 <script>
+
 var myElement = document.getElementById('container');
 var mc = new Hammer(myElement);
 mc.on("tap", function(ev) {
      if(ev.target.dataset.index){
        openModal();
        slider.goTo(Number(ev.target.dataset.index) - 1 );
-       //currentSlide(Number(ev.target.dataset.index));
      }
 });
 
-// 1. Basic object for our stuff
+//Basic Object
 window.slider = {};
 
-// 2. Settings
+//Settings
 slider.sliderPanelSelector = '.slider-panel';
 slider.sliderPaginationSelector = '.slider-pagination';
 slider.sensitivity = 25 // horizontal % needed to trigger swipe
@@ -410,8 +408,6 @@ slider.goTo = function( number ) {
 // Initialize
 slider.init( '#slider' );
 
-
-
 var myModal = document.getElementById('myModal');
 var mm = new Hammer(myModal);
 mm.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
@@ -419,18 +415,6 @@ mm.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 mm.on("swipedown", function(ev) {
      closeModal();
 });
-/*
-
-mm.on("swipeleft", function(ev) {
-    plusSlides(1)
-});
-
-mm.on("swiperight", function(ev) {
-    plusSlides(-1)
-});*/
-
-
-
 
 
 var modalContent = document.getElementById('modalC');
@@ -463,38 +447,6 @@ function closeModal() {
        modalImg.className = "modal-content";
      }, 400);
 }
-
-/*
-var slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-   showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex-1].style.display = "block";
-  var childNodes = slides[slideIndex-1].childNodes;
-  for(var i = 0; i < childNodes.length ; i++){
-    if(childNodes[i].alt){
-      document.getElementById('mh').innerHTML = childNodes[i].alt;
-    }
-      
-  }
-}*/
 </script>
 </body>
 </html> 
