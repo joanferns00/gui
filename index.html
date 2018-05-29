@@ -403,6 +403,10 @@ slider.goTo = function( number ) {
         //5. Update the modal header
     var headerText = ['Mountain View', 'Lounge', 'Air', 'Race Car', 'Lounge', 'Desks', 'Hive', 'Logo'];
      document.getElementById('mh').innerHTML = headerText[slider.activeSlide]; 
+
+     //Show the modal header and footer
+      document.getElementById('modal-header').style.visibility = "visible";
+      document.getElementById('mf').style.visibility = "visible";     
 };
 
 // Initialize
