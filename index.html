@@ -160,6 +160,8 @@ body{
 
 .modal-footer-image{
   margin: 15px;
+  width: 4%;
+  height: 4%;
 }
 .modal-footer-content{
   display: flex;
@@ -400,6 +402,9 @@ slider.goTo = function( number ) {
    var className = n == slider.activeSlide ? 'is-active' : '';
    pagination[n].className = className;
  }
+        //5. Update the modal header
+    var headerText = ['Mountain View', 'Lounge', 'Air', 'Race Car', 'Lounge', 'Desks', 'Hive', 'Logo'];
+     document.getElementById('mh').innerHTML = headerText[number]; 
 };
 
 // Initialize
