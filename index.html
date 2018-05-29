@@ -335,7 +335,6 @@ slider.init = function( selector ) {
   // 4d. Set up HammerJS
   var sliderManager = new Hammer.Manager( slider.sliderEl );
   sliderManager.add( new Hammer.Pan({ threshold: 0, pointers: 0 }) );
-  sliderManager.add( new Hammer.Swipe({ direction: Hammer.DIRECTION_ALL }) );
   sliderManager.on( 'pan', function( e ) {
     
     // 4e. Calculate pixel movements into 1:1 screen percents so gestures track with motion
@@ -363,10 +362,6 @@ slider.init = function( selector ) {
       }
     }
   });
- sliderManager.on('swipedown', function(ev) {
-     alert('Closing modal');
-     closeModal();
-});
 
 };
 
@@ -401,7 +396,7 @@ slider.goTo = function( number ) {
 // Initialize
 slider.init( '#slider' );
 
-/*
+
 
 var myModal = document.getElementById('myModal');
 var mm = new Hammer(myModal);
@@ -410,6 +405,7 @@ mm.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 mm.on("swipedown", function(ev) {
      closeModal();
 });
+/*
 
 mm.on("swipeleft", function(ev) {
     plusSlides(1)
